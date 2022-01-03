@@ -1,0 +1,5 @@
+{
+ :hikaricp {:database-name "*" :server-name "***" :port-number "5432" :username "*" :password "*"}
+ :db-image {:database-name "*" :server-name "***" :port-number "5432" :username "*" :password "*"}
+ :proxy true
+ }

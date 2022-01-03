@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+a {
+    color: #808080;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: darkslategrey;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('/assets/minecraft_dirt.jpg');
+}
+
+p.flat {
+    padding: 0;
+    margin: 0;
+}
+
+p.right {
+    text-align: right;
+}
+
+.fgold {
+    color: gold;
+    font-size: 28px;
+}
+
+.footer {
+    background: #f5f5f5;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border: none;
+    border-top: 1px solid #cccccc;
+    margin: 0;
+    padding: 0;
+}
+
+.cat {
+    margin-top:5px;
+    margin-right:5px;
+}

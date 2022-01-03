@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  www-live:
+    environment:
+      - LEIN_NO_DEV=1
+      - PROXY=true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalprime/mcserverinfo-ssr:latest
+    networks:
+      - traefik-net
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.mcsi-ssr-live.tls=true"
+        - "traefik.http.routers.mcsi-ssr-live.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.mcsi-ssr-live.rule=Host(`www.mcserverinfo.com`)"
+        - "traefik.http.routers.mcsi-ssr-live.entrypoints=web,websecure"
+        - "traefik.http.routers.mcsi-ssr-live.service=mcsi-ssr-live"
+        - "traefik.http.services.mcsi-ssr-live.loadbalancer.server.port=3000"
+        - "traefik.http.middlewares.mcsi-ssr-live.compress=true"
+
+    # Normal docker, the swarm one is above
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mcsi-ssr-live.tls=true"
+      - "traefik.http.routers.mcsi-ssr-live.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.mcsi-ssr-live.rule=Host(`www.mcserverinfo.com`)"
+      - "traefik.http.routers.mcsi-ssr-live.entrypoints=web,websecure"
+      - "traefik.http.routers.mcsi-ssr-live.service=mcsi-ssr-live"
+      - "traefik.http.services.mcsi-ssr-live.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.mcsi-ssr-live.compress=true"
+
+networks:
+  traefik-net:
+    external: true
